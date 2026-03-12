@@ -1,95 +1,121 @@
 # samenbank-app
 
-Flutter-App zur Organisation einer privaten Samenbank mit Monatsansicht, Sortenverwaltung und lokaler JSON-Working-Copy.
+Flutter app for managing a private seed collection with a month-oriented growing calendar, variety management, and local JSON-based working copies.
 
-## Überblick
+Flutter-App zur Verwaltung einer privaten Samenbank mit monatsorientierter Gartenansicht, Sortenverwaltung und lokaler JSON-Working-Copy.
 
-Die App bündelt Saatgutdaten in einer lokalen Arbeitsdatei und stellt sie in einer auf Gartenmonate ausgerichteten Oberfläche dar. Der aktuelle Fokus liegt auf:
+Repository name: `samenbank-app` / package name: `samenbank` / app name on the device: `Saatenschluessel`.
 
-- Monatsübersicht mit relevanten Aussaat- und Voranzuchtfenstern
-- Sortenliste mit Filter und Anlage neuer Einträge
-- Detailansicht zum Bearbeiten von Sorten
-- Import einer lokalen oder externen Working-Copy, zum Beispiel über Android SAF und Nextcloud
+## Overview
+
+`samenbank-app` is a personal seed inventory and planning app built with Flutter. It is designed for gardeners who want to keep seed varieties, sowing windows, and related notes in a structured local format instead of a spreadsheet.
+
+The repository and package still use the historic `samenbank` naming, while the installed app is presented to end users as `Saatenschluessel`.
+
+The current app focuses on:
+
+- month-based planning for sowing and pre-cultivation periods
+- a searchable list of seed varieties
+- detail views for editing seed entries
+- import of local or external working copies, for example via Android SAF or Nextcloud
+- JSON backup export
+
+## Ueberblick
+
+Die App dient zur Organisation einer privaten Saatgut-Sammlung in einem lokalen, einfach transportierbaren Datenformat. Der aktuelle Funktionsumfang umfasst:
+
+Repository und Paket verwenden weiterhin den historischen Namen `samenbank`, waehrend die installierte App auf dem Geraet als `Saatenschluessel` erscheint.
+
+- Monatsansicht mit relevanten Aussaat- und Voranzuchtfenstern
+- Sortenliste mit Suche, Filterung und Neuanlage
+- Detailansichten zum Bearbeiten von Sorten
+- Import lokaler oder externer Working Copies, zum Beispiel ueber Android SAF oder Nextcloud
 - Export von Backups als JSON
 
-## Tech-Stack
+## Project Status
+
+This repository contains a working Flutter application with tests and technical documentation. The repository only includes demo data. Real or private seed data should be stored in local, non-versioned files or external working copies, not in Git.
+
+## Tech Stack
 
 - Flutter
 - Dart
-- Lokale JSON-Datenhaltung
-- GitHub Actions für Analyse und Tests
+- local JSON persistence
+- GitHub Actions for analysis and tests
 
-## Projektstatus
+## Getting Started
 
-Das Repository enthält eine lauffähige Flutter-App inklusive Tests und technischer Dokumentation. Die öffentliche Variante `samenbank-app` enthält nur Demo-Daten im Repository; produktive/private Saatgutdaten gehören in eine externe oder lokale, nicht versionierte Arbeitsdatei.
+Prerequisites:
 
-## Schnellstart
+- Flutter SDK
+- Dart SDK compatible with the Flutter version used by this project
 
-Voraussetzungen:
-
-- Flutter SDK installiert
-- Dart SDK passend zur im Projekt verwendeten Flutter-Version
-
-Projekt lokal starten:
+Run locally:
 
 ```bash
 flutter pub get
 flutter run
 ```
 
-Tests und Analyse ausführen:
+Run analysis and tests:
 
 ```bash
 flutter analyze
 flutter test
 ```
 
-Code formatieren:
+Format code:
 
 ```bash
 dart format .
 ```
 
-CI-kompatible Format-Prüfung:
+CI-style format check:
 
 ```bash
 dart format --output=none --set-exit-if-changed .
 ```
 
-## Datenmodell
+## Android Release Build
 
-- `assets/seeds.json` ist das mitgelieferte Import-/Legacy-Format mit Demo-Daten.
-- Die App arbeitet intern mit einer lokalen Working Copy im App-Format v1.
-- Die Formatbeschreibung liegt in [docs/app_format_v1.md](docs/app_format_v1.md).
-- Weitere Vertrags- und QA-Dokumente liegen im Ordner [docs](docs).
+For local Android releases outside the Play Store, the project expects a private keystore configured via `android/key.properties`. The keystore passwords are read from environment variables so they do not need to live in a file.
 
-## Demo-Daten und Privatsphäre
+1. Copy `android/key.properties.example` to `android/key.properties`.
+2. Create or choose a local keystore file.
+3. Fill in `storeFile` and `keyAlias`.
+4. Export `SAATENSCHLUESSEL_STORE_PASSWORD` and `SAATENSCHLUESSEL_KEY_PASSWORD` in your shell.
+5. Build the release artifact with `flutter build apk --release`.
 
-Dieses Repository enthaelt ausschliesslich Demo-Daten. Eigene oder produktive Seed-Daten sollten nicht versioniert werden, sondern nur in lokalen Exportdateien oder externen Working Copies liegen.
+`android/key.properties` and keystore files are intentionally ignored by Git.
 
-## Projektstruktur
+You can also use `./build-release.sh`. The script prompts for missing passwords without echoing them and then runs the Android release build.
 
-- [lib/main.dart](lib/main.dart): App-Einstieg und Monatsansicht
-- [lib/all_seeds_screen.dart](lib/all_seeds_screen.dart): Sortenliste
-- [lib/seed_detail_screen_v2.dart](lib/seed_detail_screen_v2.dart): Detail- und Bearbeitungsansicht
-- [lib/settings_screen.dart](lib/settings_screen.dart): Working-Copy-Auswahl, Reload und Export
-- [test](test): automatisierte Tests
-- [.github/workflows/flutter_ci.yml](.github/workflows/flutter_ci.yml): CI für Analyse und Tests
+## Data Model
 
-## Plattformhinweise
+- `assets/seeds.json` contains demo data in the bundled import or legacy format.
+- The app works internally with a local working copy in app format v1.
+- The format description is documented in [docs/app_format_v1.md](docs/app_format_v1.md).
+- Additional contract and QA documentation is available in [docs](docs).
 
-- Android-spezifische Logik für externe Working Copies ist bereits vorhanden.
-- Das Repository enthält außerdem die üblichen Flutter-Targets für Web, Windows, Linux, macOS und iOS.
-- Ob alle Targets produktionsreif sind, sollte vor einer öffentlichen Veröffentlichung oder einem Release separat validiert werden.
+## Privacy
 
-## Für ein öffentliches Repository sinnvoll
+This repository is intended to be public-safe. It does not contain productive seed inventory data. If you use the app with your own collection, keep exports and working copies outside version control unless the data is explicitly meant to be shared.
 
-Vor dem Umschalten auf `public` solltest du mindestens diese Punkte prüfen:
+## Project Structure
 
-- Repository-Beschreibung, Topics und ggf. Social Preview auf GitHub setzen
-- Private Seed-Daten nur in nicht versionierten lokalen Dateien oder externen Working Copies halten
-- Optional: Screenshots, Issue-Templates und Changelog ergänzen
+- [lib/main.dart](lib/main.dart): app entry point and month view
+- [lib/all_seeds_screen.dart](lib/all_seeds_screen.dart): variety list
+- [lib/seed_detail_screen_v2.dart](lib/seed_detail_screen_v2.dart): detail and edit view
+- [lib/settings_screen.dart](lib/settings_screen.dart): working copy selection, reload, and export
+- [test](test): automated tests
+- [.github/workflows/flutter_ci.yml](.github/workflows/flutter_ci.yml): CI for analysis and tests
 
-## Lizenz
+## Platform Notes
 
-Dieses Repository steht unter der GNU GPL v3 oder spaeter (`GPL-3.0-or-later`). Details siehe [LICENSE](LICENSE).
+- Android-specific logic for external working copies is already implemented.
+- The repository also contains the standard Flutter targets for web, Windows, Linux, macOS, and iOS.
+- Production readiness should be validated per platform before publishing releases.
+
+## License
+
+This repository is licensed under the GNU GPL v3 or later (`GPL-3.0-or-later`). See [LICENSE](LICENSE) for details.
