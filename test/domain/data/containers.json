@@ -1,0 +1,28 @@
+[
+  { "containerId": "C01", "varietyRef": "V01", "tubeCode": { "color": "red", "number": 1 } },
+  { "containerId": "C02", "varietyRef": "V02", "tubeCode": { "color": "green", "number": 1 } },
+  { "containerId": "C03", "varietyRef": "V03", "tubeCode": { "color": "red", "number": 12 } },
+  { "containerId": "C04", "varietyRef": "V04", "tubeCode": { "color": "blue", "number": 1 } },
+  { "containerId": "C05", "varietyRef": "V05", "tubeCode": { "color": "red", "number": 3 } },
+  { "containerId": "C06", "varietyRef": "V06", "tubeCode": { "color": "yellow", "number": 1 } },
+  { "containerId": "C07", "varietyRef": "V07", "tubeCode": { "color": "red", "number": 4 } },
+  { "containerId": "C08", "varietyRef": "V08", "tubeCode": { "color": "red", "number": 5 } },
+  { "containerId": "C09", "varietyRef": "V09", "tubeCode": { "color": "white", "number": 1 } },
+  { "containerId": "C10", "varietyRef": "V10", "tubeCode": { "color": "white", "number": 2 } },
+  { "containerId": "C11", "varietyRef": "V11", "tubeCode": { "color": "white", "number": 3 } },
+
+  { "containerId": "C13", "varietyRef": "V13", "tubeCode": { "color": "white", "number": 4 } },
+  { "containerId": "C14", "varietyRef": "V14", "tubeCode": { "color": "yellow", "number": 2 } },
+  { "containerId": "C15", "varietyRef": "V15", "tubeCode": { "color": "blue", "number": 2 } },
+  { "containerId": "C16", "varietyRef": "V16", "tubeCode": { "color": "blue", "number": 3 } },
+  { "containerId": "C17", "varietyRef": "V17", "tubeCode": { "color": "green", "number": 2 } },
+  { "containerId": "C18", "varietyRef": "V18", "tubeCode": { "color": "green", "number": 3 } },
+
+  { "containerId": "C19A", "varietyRef": "V19A", "tubeCode": { "color": "red", "number": 6 } },
+  { "containerId": "C19B", "varietyRef": "V19B", "tubeCode": { "color": "red", "number": 7 } },
+  { "containerId": "C19C", "varietyRef": "V19C", "tubeCode": { "color": "red", "number": 8 } },
+
+  { "containerId": "C20A", "varietyRef": "V20A", "tubeCode": { "color": "red", "number": 2 } },
+  { "containerId": "C20B", "varietyRef": "V20B", "tubeCode": { "color": "red", "number": 10 } },
+  { "containerId": "C20C", "varietyRef": "V20C", "tubeCode": { "color": "blue", "number": 4 } }
+]

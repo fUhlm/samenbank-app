@@ -1,0 +1,175 @@
+[
+  {
+    "varietyId": "V01",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "Empty" },
+    "activityWindows": []
+  },
+  {
+    "varietyId": "V02",
+    "taxonKey": { "category": "blattgemueseSalat", "species": "Spinat", "varietyName": "OneMonth" },
+    "activityWindows": [
+      { "windowId": "W02A", "type": "directSow", "range": { "start": 4, "end": 4 } }
+    ]
+  },
+  {
+    "varietyId": "V03",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Radieschen", "varietyName": "SpringRun" },
+    "activityWindows": [
+      { "windowId": "W03A", "type": "directSow", "range": { "start": 3, "end": 5 } }
+    ]
+  },
+  {
+    "varietyId": "V04",
+    "taxonKey": { "category": "kohlgewaechse", "species": "Feldsalat", "varietyName": "WinterWrap" },
+    "activityWindows": [
+      { "windowId": "W04A", "type": "directSow", "range": { "start": 11, "end": 2 } }
+    ]
+  },
+  {
+    "varietyId": "V05",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "PreOnly" },
+    "activityWindows": [
+      { "windowId": "W05A", "type": "preCulture", "range": { "start": 1, "end": 3 } }
+    ]
+  },
+  {
+    "varietyId": "V06",
+    "taxonKey": { "category": "blumen", "species": "Ringelblume", "varietyName": "SaveOnly" },
+    "activityWindows": [
+      { "windowId": "W06A", "type": "seedSaving", "range": { "start": 8, "end": 9 } }
+    ]
+  },
+  {
+    "varietyId": "V07",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Paprika", "varietyName": "TwoStartSame" },
+    "activityWindows": [
+      { "windowId": "W07A", "type": "preCulture", "range": { "start": 2, "end": 4 } },
+      { "windowId": "W07B", "type": "directSow", "range": { "start": 4, "end": 4 } }
+    ]
+  },
+  {
+    "varietyId": "V08",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Gurke", "varietyName": "Switch" },
+    "activityWindows": [
+      { "windowId": "W08A", "type": "preCulture", "range": { "start": 3, "end": 3 } },
+      { "windowId": "W08B", "type": "directSow", "range": { "start": 4, "end": 6 } }
+    ]
+  },
+  {
+    "varietyId": "V09",
+    "taxonKey": { "category": "sonstigesGemuese", "species": "Moehre", "varietyName": "TwoSeasons" },
+    "activityWindows": [
+      { "windowId": "W09A", "type": "directSow", "range": { "start": 3, "end": 4 } },
+      { "windowId": "W09B", "type": "directSow", "range": { "start": 8, "end": 9 } }
+    ]
+  },
+  {
+    "varietyId": "V10",
+    "taxonKey": { "category": "leguminosen", "species": "Bohne", "varietyName": "Overlap" },
+    "activityWindows": [
+      { "windowId": "W10A", "type": "directSow", "range": { "start": 3, "end": 5 } },
+      { "windowId": "W10B", "type": "directSow", "range": { "start": 5, "end": 6 } }
+    ]
+  },
+  {
+    "varietyId": "V11",
+    "taxonKey": { "category": "kraeuter", "species": "Basilikum", "varietyName": "PreWrap" },
+    "activityWindows": [
+      { "windowId": "W11A", "type": "preCulture", "range": { "start": 10, "end": 1 } }
+    ]
+  },
+  {
+    "varietyId": "V12",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "NoTube" },
+    "activityWindows": [
+      { "windowId": "W12A", "type": "preCulture", "range": { "start": 2, "end": 3 } }
+    ]
+  },
+  {
+    "varietyId": "V13",
+    "taxonKey": { "category": "EXOTEN", "species": "Foo", "varietyName": "UnknownCat" },
+    "activityWindows": [
+      { "windowId": "W13A", "type": "directSow", "range": { "start": 6, "end": 6 } }
+    ]
+  },
+  {
+    "varietyId": "V14",
+    "taxonKey": { "category": "blumen", "species": "Cosmos", "varietyName": "AllYear" },
+    "activityWindows": [
+      { "windowId": "W14A", "type": "directSow", "range": { "start": 1, "end": 12 } }
+    ]
+  },
+  {
+    "varietyId": "V15",
+    "taxonKey": { "category": "kohlgewaechse", "species": "Kohl", "varietyName": "DecOnly" },
+    "activityWindows": [
+      { "windowId": "W15A", "type": "directSow", "range": { "start": 12, "end": 12 } }
+    ]
+  },
+  {
+    "varietyId": "V16",
+    "taxonKey": { "category": "kohlgewaechse", "species": "Kohl", "varietyName": "JanOnly" },
+    "activityWindows": [
+      { "windowId": "W16A", "type": "directSow", "range": { "start": 1, "end": 1 } }
+    ]
+  },
+  {
+    "varietyId": "V17",
+    "taxonKey": { "category": "blattgemueseSalat", "species": "Salat", "varietyName": "EndingProbe1" },
+    "activityWindows": [
+      { "windowId": "W17A", "type": "directSow", "range": { "start": 3, "end": 4 } }
+    ]
+  },
+  {
+    "varietyId": "V18",
+    "taxonKey": { "category": "blattgemueseSalat", "species": "Salat", "varietyName": "EndingProbe2" },
+    "activityWindows": [
+      { "windowId": "W18A", "type": "directSow", "range": { "start": 4, "end": 4 } },
+      { "windowId": "W18B", "type": "directSow", "range": { "start": 5, "end": 6 } }
+    ]
+  },
+
+  {
+    "varietyId": "V19A",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "A" },
+    "activityWindows": [
+      { "windowId": "W19A1", "type": "preCulture", "range": { "start": 4, "end": 4 } }
+    ]
+  },
+  {
+    "varietyId": "V19B",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "B" },
+    "activityWindows": [
+      { "windowId": "W19B1", "type": "preCulture", "range": { "start": 3, "end": 5 } }
+    ]
+  },
+  {
+    "varietyId": "V19C",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "C" },
+    "activityWindows": [
+      { "windowId": "W19C1", "type": "preCulture", "range": { "start": 1, "end": 12 } }
+    ]
+  },
+
+  {
+    "varietyId": "V20A",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "Alpha" },
+    "activityWindows": [
+      { "windowId": "W20A1", "type": "directSow", "range": { "start": 6, "end": 6 } }
+    ]
+  },
+  {
+    "varietyId": "V20B",
+    "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "Beta" },
+    "activityWindows": [
+      { "windowId": "W20B1", "type": "directSow", "range": { "start": 6, "end": 6 } }
+    ]
+  },
+  {
+    "varietyId": "V20C",
+    "taxonKey": { "category": "kohlgewaechse", "species": "Brokkoli", "varietyName": "A" },
+    "activityWindows": [
+      { "windowId": "W20C1", "type": "directSow", "range": { "start": 6, "end": 6 } }
+    ]
+  }
+]

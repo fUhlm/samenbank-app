@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "generated_at": "2026-03-12T00:00:00Z",
+  "demo_data": true,
+  "seeds": [
+    {
+      "variety_id": "tomate-sunrise-demo-a1b2c3",
+      "category": "Fruchtgemüse",
+      "species": "Tomate",
+      "variety_name": "Sunrise Demo",
+      "latin_name": "Solanum lycopersicum",
+      "container": {
+        "tube_number": "1",
+        "tube_color_key": "red"
+      },
+      "botany": {
+        "family": "Solanaceae"
+      },
+      "properties": {
+        "eigenschaft": "Fruehe Demo-Sorte fuer Beispielansichten"
+      },
+      "cultivation": {
+        "freiland": "ja",
+        "row_spacing_cm": "70",
+        "plant_spacing_cm": "50",
+        "plant_height_cm": "160"
+      },
+      "flags": {
+        "rebuild_required": false,
+        "variety_name_from_species": false
+      },
+      "calendar": {
+        "aussaat": [],
+        "voranzucht": [3, 4],
+        "auspflanzen": [5],
+        "bluete": [6, 7],
+        "ernte": [8, 9]
+      },
+      "meta": {
+        "keimtemp_c": "20-24",
+        "tiefe_cm": "0.5-1"
+      }
+    },
+    {
+      "variety_id": "salat-market-green-demo-d4e5f6",
+      "category": "Blattgemuese/Salat",
+      "species": "Pfluecksalat",
+      "variety_name": "Market Green Demo",
+      "latin_name": "Lactuca sativa",
+      "container": {
+        "tube_number": "2",
+        "tube_color_key": "green"
+      },
+      "botany": {
+        "family": "Asteraceae"
+      },
+      "properties": {
+        "eigenschaft": "Schnell wachsender Beispieldatensatz"
+      },
+      "cultivation": {
+        "freiland": "ja",
+        "row_spacing_cm": "25",
+        "plant_spacing_cm": "20"
+      },
+      "flags": {
+        "rebuild_required": false,
+        "variety_name_from_species": false
+      },
+      "calendar": {
+        "aussaat": [3, 4, 8],
+        "voranzucht": [],
+        "auspflanzen": [],
+        "bluete": [],
+        "ernte": [5, 6, 9]
+      }
+    },
+    {
+      "variety_id": "basilikum-genovese-demo-112233",
+      "category": "Kraeuter",
+      "species": "Basilikum",
+      "variety_name": "Genovese Demo",
+      "latin_name": "Ocimum basilicum",
+      "container": {
+        "tube_number": "3",
+        "tube_color_key": "blue"
+      },
+      "botany": {
+        "family": "Lamiaceae"
+      },
+      "properties": {
+        "eigenschaft": "Kuechenkraut fuer Demo-Filter"
+      },
+      "cultivation": {
+        "freiland": "nein",
+        "gruenduengung": "nein",
+        "row_spacing_cm": "25",
+        "plant_spacing_cm": "20",
+        "plant_height_cm": "40"
+      },
+      "flags": {
+        "rebuild_required": false,
+        "variety_name_from_species": false
+      },
+      "calendar": {
+        "aussaat": [],
+        "voranzucht": [3, 4],
+        "auspflanzen": [5, 6],
+        "bluete": [7],
+        "ernte": [6, 7, 8]
+      },
+      "meta": {
+        "keimtemp_c": "18-22",
+        "tiefe_cm": "0.5"
+      }
+    },
+    {
+      "variety_id": "ringelblume-sunset-demo-445566",
+      "category": "Blumen",
+      "species": "Ringelblume",
+      "variety_name": "Sunset Demo",
+      "latin_name": "Calendula officinalis",
+      "container": {
+        "tube_number": "4",
+        "tube_color_key": "yellow"
+      },
+      "botany": {
+        "family": "Asteraceae"
+      },
+      "properties": {
+        "eigenschaft": "Zier- und Nahrpflanze fuer Demo-Daten"
+      },
+      "cultivation": {
+        "freiland": "ja"
+      },
+      "flags": {
+        "rebuild_required": true,
+        "variety_name_from_species": false
+      },
+      "calendar": {
+        "aussaat": [4, 5],
+        "voranzucht": [],
+        "auspflanzen": [],
+        "bluete": [6, 7, 8],
+        "ernte": [9]
+      }
+    },
+    {
+      "variety_id": "kuerbis-mini-blue-demo-778899",
+      "category": "Kuerbisartige",
+      "species": "Kuerbis",
+      "variety_name": "Mini Blue Demo",
+      "latin_name": "Cucurbita maxima",
+      "container": {
+        "tube_number": "5",
+        "tube_color_key": "white"
+      },
+      "botany": {
+        "family": "Cucurbitaceae"
+      },
+      "properties": {
+        "eigenschaft": "Rankende Sorte fuer Beispielkalender"
+      },
+      "cultivation": {
+        "freiland": "ja",
+        "row_spacing_cm": "120",
+        "plant_spacing_cm": "100"
+      },
+      "flags": {
+        "rebuild_required": false,
+        "variety_name_from_species": false
+      },
+      "calendar": {
+        "aussaat": [],
+        "voranzucht": [4],
+        "auspflanzen": [5],
+        "bluete": [7],
+        "ernte": [9, 10]
+      },
+      "meta": {
+        "keimtemp_c": "20-24",
+        "tiefe_cm": "2-3"
+      }
+    }
+  ]
+}
