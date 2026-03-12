@@ -1,0 +1,24 @@
+{
+  "invalidVarieties": [
+    {
+      "varietyId": "VX1",
+      "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "Alpha" },
+      "activityWindows": [
+        { "windowId": "WX1A", "type": "directSow", "range": { "start": 6, "end": 6 } }
+      ]
+    },
+    {
+      "varietyId": "VX2",
+      "taxonKey": { "category": "fruchtgemuese", "species": "Tomate", "varietyName": "Alpha" },
+      "activityWindows": [
+        { "windowId": "WX2A", "type": "directSow", "range": { "start": 7, "end": 7 } }
+      ]
+    }
+  ],
+  "invalidContainers": [
+    { "containerId": "CX1", "varietyRef": "V05", "tubeCode": { "color": "red", "number": 3 } },
+    { "containerId": "CX2", "varietyRef": "V05", "tubeCode": { "color": "red", "number": 99 } },
+
+    { "containerId": "CX3", "varietyRef": "V06", "tubeCode": { "color": "yellow", "number": 1 } }
+  ]
+}

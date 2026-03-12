@@ -1,0 +1,422 @@
+[
+  {
+    "caseId": "CASE01_EMPTY_ALWAYS_NONE",
+    "varietyId": "V01",
+    "checks": [
+      { "month": 1, "isRelevant": false, "phase": "none" },
+      { "month": 6, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE02_ONE_MONTH_DIRECT",
+    "varietyId": "V02",
+    "checks": [
+      { "month": 3, "isRelevant": false, "phase": "none" },
+      {
+        "month": 4,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": {
+          "directSow": { "starts": true, "continues": false, "ends": true, "activeWindowIds": ["W02A"] }
+        }
+      },
+      { "month": 5, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE03_MULTI_MONTH_DIRECT_NORMAL",
+    "varietyId": "V03",
+    "checks": [
+      { "month": 2, "isRelevant": false, "phase": "none" },
+      {
+        "month": 3,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W03A"] } }
+      },
+      {
+        "month": 4,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": false, "activeWindowIds": ["W03A"] } }
+      },
+      {
+        "month": 5,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W03A"] } }
+      },
+      { "month": 6, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE04_WRAP_DIRECT_11_TO_2",
+    "varietyId": "V04",
+    "checks": [
+      { "month": 10, "isRelevant": false, "phase": "none" },
+      {
+        "month": 11,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W04A"] } }
+      },
+      {
+        "month": 12,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": false, "activeWindowIds": ["W04A"] } }
+      },
+      {
+        "month": 1,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": false, "activeWindowIds": ["W04A"] } }
+      },
+      {
+        "month": 2,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W04A"] } }
+      },
+      { "month": 3, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE05_PRE_ONLY_1_TO_3",
+    "varietyId": "V05",
+    "checks": [
+      {
+        "month": 1,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "preCulture": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W05A"] } }
+      },
+      {
+        "month": 2,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "preCulture": { "starts": false, "continues": true, "ends": false, "activeWindowIds": ["W05A"] } }
+      },
+      {
+        "month": 3,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "preCulture": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W05A"] } }
+      },
+      { "month": 4, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE06_seedSaving_8_TO_9",
+    "varietyId": "V06",
+    "checks": [
+      { "month": 7, "isRelevant": false, "phase": "none" },
+      {
+        "month": 8,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "seedSaving": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W06A"] } }
+      },
+      {
+        "month": 9,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "seedSaving": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W06A"] } }
+      },
+      { "month": 10, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE07_TWO_ACTIVITIES_SAME_MONTH",
+    "varietyId": "V07",
+    "checks": [
+      {
+        "month": 2,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "preCulture": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W07A"] } }
+      },
+      {
+        "month": 3,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "preCulture": { "starts": false, "continues": true, "ends": false, "activeWindowIds": ["W07A"] } }
+      },
+      {
+        "month": 4,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": {
+          "preCulture": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W07A"] },
+          "directSow": { "starts": true, "continues": false, "ends": true, "activeWindowIds": ["W07B"] }
+        }
+      },
+      { "month": 5, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE08_SWITCH_PRE_TO_DIRECT",
+    "varietyId": "V08",
+    "checks": [
+      { "month": 2, "isRelevant": false, "phase": "none" },
+      {
+        "month": 3,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "preCulture": { "starts": true, "continues": false, "ends": true, "activeWindowIds": ["W08A"] } }
+      },
+      {
+        "month": 4,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W08B"] } }
+      },
+      {
+        "month": 6,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W08B"] } }
+      },
+      { "month": 7, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE09_TWO_SEASONS_SAME_TYPE",
+    "varietyId": "V09",
+    "checks": [
+      {
+        "month": 3,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W09A"] } }
+      },
+      {
+        "month": 4,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W09A"] } }
+      },
+      { "month": 5, "isRelevant": false, "phase": "none" },
+      {
+        "month": 8,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W09B"] } }
+      },
+      {
+        "month": 9,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W09B"] } }
+      }
+    ]
+  },
+
+  {
+    "caseId": "CASE10_OVERLAP_OR_FLAGS",
+    "varietyId": "V10",
+    "checks": [
+      {
+        "month": 3,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W10A"] } }
+      },
+      {
+        "month": 5,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": true, "ends": true, "activeWindowIds": ["W10A", "W10B"] } }
+      },
+      {
+        "month": 6,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W10B"] } }
+      },
+      { "month": 7, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE11_WRAP_PRE_10_TO_1",
+    "varietyId": "V11",
+    "checks": [
+      {
+        "month": 10,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "preCulture": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W11A"] } }
+      },
+      {
+        "month": 12,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "preCulture": { "starts": false, "continues": true, "ends": false, "activeWindowIds": ["W11A"] } }
+      },
+      {
+        "month": 1,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "preCulture": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W11A"] } }
+      },
+      { "month": 2, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE12_NO_CONTAINER_STILL_WORKS",
+    "varietyId": "V12",
+    "checks": [
+      {
+        "month": 2,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "preCulture": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W12A"] } }
+      },
+      {
+        "month": 3,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "preCulture": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W12A"] } }
+      },
+      { "month": 4, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE13_unknown_CATEGORY_RANK_9999",
+    "varietyId": "V13",
+    "checks": [
+      { "month": 5, "isRelevant": false, "phase": "none" },
+      {
+        "month": 6,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": true, "activeWindowIds": ["W13A"] } }
+      },
+      { "month": 7, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE14_ALL_YEAR_WINDOW_RING_EFFECT",
+    "varietyId": "V14",
+    "checks": [
+      {
+        "month": 1,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": false, "activeWindowIds": ["W14A"] } }
+      },
+      {
+        "month": 12,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": false, "activeWindowIds": ["W14A"] } }
+      }
+    ]
+  },
+
+  {
+    "caseId": "CASE15_DEC_ONLY",
+    "varietyId": "V15",
+    "checks": [
+      { "month": 11, "isRelevant": false, "phase": "none" },
+      {
+        "month": 12,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": true, "activeWindowIds": ["W15A"] } }
+      },
+      { "month": 1, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE16_JAN_ONLY",
+    "varietyId": "V16",
+    "checks": [
+      { "month": 12, "isRelevant": false, "phase": "none" },
+      {
+        "month": 1,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": true, "activeWindowIds": ["W16A"] } }
+      },
+      { "month": 2, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE17_ENDING_PROBE_1",
+    "varietyId": "V17",
+    "checks": [
+      {
+        "month": 3,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W17A"] } }
+      },
+      {
+        "month": 4,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W17A"] } }
+      },
+      { "month": 5, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE18_ENDING_PROBE_2",
+    "varietyId": "V18",
+    "checks": [
+      {
+        "month": 4,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": true, "activeWindowIds": ["W18A"] } }
+      },
+      {
+        "month": 5,
+        "isRelevant": true,
+        "phase": "newPhase",
+        "activity": { "directSow": { "starts": true, "continues": false, "ends": false, "activeWindowIds": ["W18B"] } }
+      },
+      {
+        "month": 6,
+        "isRelevant": true,
+        "phase": "ongoing",
+        "activity": { "directSow": { "starts": false, "continues": true, "ends": true, "activeWindowIds": ["W18B"] } }
+      },
+      { "month": 7, "isRelevant": false, "phase": "none" }
+    ]
+  },
+
+  {
+    "caseId": "CASE19_OVERVIEW_PHASE_BUCKET_ORDER_MONTH_4",
+    "overview": {
+      "month": 4,
+      "inputVarietyIds": ["V19A", "V19B", "V19C"],
+      "expectedSortedVarietyIds": ["V19A", "V19B", "V19C"]
+    }
+  },
+
+  {
+    "caseId": "CASE20_OVERVIEW_FULL_SORT_ORDER_MONTH_6",
+    "overview": {
+      "month": 6,
+      "inputVarietyIds": ["V20B", "V13", "V20C", "V20A"],
+      "expectedSortedVarietyIds": ["V20A", "V20B", "V20C", "V13"]
+    }
+  }
+]

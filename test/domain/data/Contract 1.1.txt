@@ -1,0 +1,255 @@
+
+SAMENBANK – DOMAIN CONTRACT v1.1
+================================
+
+Status: fachlich abgeschlossen, testbar, technologie-agnostisch
+Zweck: Single Source of Truth für die fachliche Logik der App „Samenbank“
+
+----------------------------------------------------------------
+1. ZWECK & GÜLTIGKEIT
+----------------------------------------------------------------
+Die Domain „Samenbank“ beschreibt Saatgut handlungsorientiert im Jahresverlauf.
+Sie beantwortet ausschließlich:
+
+  „Welche Sorten sind in einem bestimmten Monat fachlich relevant – und in welchem Status?“
+
+Nicht Teil der Domain sind:
+- Erinnerungen, To-Dos, Benachrichtigungen
+- Priorisierung oder Dringlichkeit
+- Erfolg, Ernte, Bewertung
+- Wetter, Standort, Mikroklima
+- Tages- oder Wochenlogik
+- UI- oder Backend-Details
+
+----------------------------------------------------------------
+2. ZEITMODELL
+----------------------------------------------------------------
+Primäre Zeitachse ist der Monat.
+
+MonthOfYear:
+- Wertebereich: 1..12
+
+Monate sind zyklisch (Ringmodell, kein Rand).
+
+Hilfsfunktionen (normativ):
+- prevMonth(m) = ((m + 10) mod 12) + 1
+- nextMonth(m) = (m mod 12) + 1
+
+Explizit:
+- prevMonth(1) = 12
+- nextMonth(12) = 1
+
+----------------------------------------------------------------
+3. ENTITÄTEN & IDENTITÄT
+----------------------------------------------------------------
+
+3.1 Variety (Sorte)
+Repräsentiert eine Sorte als fachliches Konzept.
+
+Pflichtattribute:
+- varietyId
+- taxonKey:
+    - category
+    - species
+    - varietyName
+- activityWindows: List<ActivityWindow>
+
+Identitätsregeln:
+- varietyId ist die primäre technische Identität.
+- taxonKey (category, species, varietyName) ist fachlich eindeutig.
+- Zwei Varieties mit identischem taxonKey sind unzulässig.
+
+Variety existiert unabhängig von physischem Saatgut.
+
+------------------------------------------------------------
+
+3.2 SeedContainer (Röhrchen)
+Physisches Saatgut-Röhrchen.
+
+Pflichtattribute:
+- containerId
+- tubeCode
+- varietyRef
+
+Zuordnungsregeln:
+- Ein SeedContainer referenziert genau eine Variety.
+- Eine Variety hat höchstens einen SeedContainer (0..1).
+- Zwei SeedContainer dürfen nicht dieselbe Variety referenzieren.
+- container.varietyRef ist unveränderlich.
+
+Lebensdauer:
+- Variety kann ohne SeedContainer existieren (z. B. leer, verloren, archiviert).
+- SeedContainer kann fehlen, ohne dass Variety gelöscht wird.
+
+------------------------------------------------------------
+
+3.3 TubeCode
+Physischer Identifikationscode.
+
+Attribute:
+- color
+- number (Integer)
+
+Regeln:
+- (color, number) ist eindeutig.
+- number wird numerisch sortiert (2 < 10).
+
+----------------------------------------------------------------
+4. KATEGORIEN & FARBEN
+----------------------------------------------------------------
+
+4.1 CategoryOrder (fachliche Sortierreihenfolge)
+
+1. fruchtgemuese
+2. kuerbisartige
+3. kohlgewaechse
+4. blattgemueseSalat
+5. leguminosen
+6. sonstigesGemuese
+7. kraeuter
+8. blumen
+
+Unbekannte Kategorien:
+- erhalten Rank = 9999
+- werden nach bekannten Kategorien einsortiert
+- innerhalb unknown alphabetisch
+
+------------------------------------------------------------
+
+4.2 CategoryColorMap (normativ)
+
+- fruchtgemuese        -> red
+- blattgemueseSalat   -> green
+- kohlgewaechse        -> blue
+- blumen               -> yellow
+- alle anderen         -> white
+
+Die Röhrchenfarbe ist deterministisch aus der Kategorie ableitbar.
+
+----------------------------------------------------------------
+5. AKTIVITÄTEN & ZEITFENSTER
+----------------------------------------------------------------
+
+5.1 ActivityType
+- directSow     (Direktsaat)
+- preCulture    (Voranzucht)
+- seedSaving    (Nachbau)
+
+------------------------------------------------------------
+
+5.2 ActivityWindow
+Beschreibt ein fachliches Zeitfenster.
+
+Attribute:
+- type: ActivityType
+- range: MonthRange(start, end)
+
+Regeln:
+- Pro Variety sind mehrere Fenster pro ActivityType erlaubt.
+- MonthRange ist inklusiv.
+- MonthRange kann wrap-around sein (z. B. Nov–Feb).
+- start == end ist ein gültiges Ein-Monats-Fenster.
+
+------------------------------------------------------------
+
+5.3 MonthRange.contains(m)
+
+- Wenn start <= end:
+    start <= m <= end
+- Wenn start > end (wrap-around):
+    m >= start OR m <= end
+
+----------------------------------------------------------------
+6. STATUSLOGIK (START / LÄUFT / ENDET)
+----------------------------------------------------------------
+
+Ein ActivityWindow ist in Monat m aktiv, wenn contains(range, m) == true.
+
+Für ein aktives Fenster gilt:
+
+- starts:
+    aktiv in m UND NICHT aktiv in prevMonth(m)
+- continues:
+    aktiv in m UND aktiv in prevMonth(m)
+- ends:
+    aktiv in m UND NICHT aktiv in nextMonth(m)
+
+Ein-Monats-Fenster:
+- starts == true
+- ends == true
+(im selben Monat)
+
+----------------------------------------------------------------
+7. ACTIVITYINMONTH (AGGREGATION)
+----------------------------------------------------------------
+
+Für jede Variety, jeden Monat m und jeden ActivityType t existiert genau
+ein ActivityInMonth(t,m).
+
+Wenn kein Fenster dieses Typs aktiv ist:
+- starts = false
+- continues = false
+- ends = false
+- activeWindows = []
+
+Aggregation pro Typ:
+- activeWindows = alle Fenster dieses Typs, die in m aktiv sind
+- starts     = OR über starts aller activeWindows
+- continues  = OR über continues aller activeWindows
+- ends       = OR über ends aller activeWindows
+
+----------------------------------------------------------------
+8. RELEVANZ & PHASE
+----------------------------------------------------------------
+
+Eine Variety ist in Monat m relevant, wenn mindestens ein ActivityWindow
+(irgendeines Typs) in m aktiv ist.
+
+------------------------------------------------------------
+
+8.1 RelevancePhase (pro Variety, pro Monat)
+
+Priorität ist strikt:
+
+1. newPhase
+   wenn EXISTS ActivityInMonth mit starts == true
+2. ongoing
+   sonst, wenn EXISTS ActivityInMonth mit continues == true
+3. ending
+   sonst, wenn EXISTS ActivityInMonth mit ends == true
+4. none
+
+ending tritt nur auf, wenn:
+- startsAny == false
+- continuesAny == false
+- endsAny == true
+
+Ein-Monats-Fenster werden immer als newPhase klassifiziert.
+
+----------------------------------------------------------------
+9. SORTIERLOGIK (DOMAIN-VERBINDLICH)
+----------------------------------------------------------------
+
+Sortierung in Monatsübersichten erfolgt immer nach:
+
+1. RelevancePhase:
+   newPhase -> ongoing -> ending
+2. CategoryOrder (fachliche Reihenfolge)
+3. species (alphabetisch)
+4. varietyName (alphabetisch)
+5. TubeCode:
+   - Kategorie-Rank
+   - number (numerisch)
+
+----------------------------------------------------------------
+10. LEITSÄTZE
+----------------------------------------------------------------
+
+- Monat schlägt Liste
+- Relevanz schlägt Vollständigkeit
+- Identifikation ermöglicht Handlung
+- Domain liefert Wahrheit, Implementierung interpretiert nicht
+
+----------------------------------------------------------------
+ENDE DES DOMAIN CONTRACTS v1.1
+----------------------------------------------------------------
