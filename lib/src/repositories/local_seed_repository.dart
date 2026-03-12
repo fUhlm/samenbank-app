@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart' show debugPrint, kDebugMode;
 import 'package:path_provider/path_provider.dart';
 
 import '../data/seed_json_mapper.dart';
@@ -144,8 +143,6 @@ class LocalSeedRepository implements SeedRepository {
     await _writeWorkingCopyJson(jsonEncode(jsonPayload));
 
     _cache = updatedSeeds;
-    // ignore: avoid_print
-    print('Seed ${seed.variety.varietyId} created in working copy');
   }
 
   @override
@@ -181,8 +178,6 @@ class LocalSeedRepository implements SeedRepository {
     await _writeWorkingCopyJson(jsonEncode(jsonPayload));
 
     _cache = updatedSeeds;
-    // ignore: avoid_print
-    print('Seed ${updatedSeed.variety.varietyId} updated in working copy');
   }
 
   @override
@@ -213,8 +208,6 @@ class LocalSeedRepository implements SeedRepository {
     await _writeWorkingCopyJson(jsonEncode(jsonPayload));
 
     _cache = updatedSeeds;
-    // ignore: avoid_print
-    print('Seed $targetVarietyId deleted from working copy');
   }
 
   @override
@@ -260,9 +253,6 @@ class LocalSeedRepository implements SeedRepository {
     try {
       _validateUniqueSeeds(seeds);
     } catch (error) {
-      if (kDebugMode) {
-        debugPrint('Seed validation failed: $error');
-      }
       rethrow;
     }
 
@@ -274,9 +264,6 @@ class LocalSeedRepository implements SeedRepository {
     if (uri != null) {
       try {
         final seeds = await _reloadExternalWorkingCopyIntoCache(uri);
-        debugPrint(
-          'Loaded seeds from external working copy (${seeds.length} entries)',
-        );
         return seeds;
       } catch (error) {
         _activeExternalWorkingCopyUri = null;
@@ -284,9 +271,6 @@ class LocalSeedRepository implements SeedRepository {
         _configuredExternalWorkingCopyUri = null;
         _initWarning =
             'Gespeicherte Arbeitsdatei nicht lesbar. Interne Datei wird verwendet.';
-        if (kDebugMode) {
-          debugPrint('External working copy fallback: $error');
-        }
       }
     }
 
@@ -297,7 +281,6 @@ class LocalSeedRepository implements SeedRepository {
       }
 
       final seeds = await _loadWorkingCopySeeds(workingCopyFile);
-      debugPrint('Loaded seeds from working copy (${seeds.length} entries)');
       return seeds;
     } catch (_) {
       if (await workingCopyFile.exists()) {
@@ -305,9 +288,6 @@ class LocalSeedRepository implements SeedRepository {
       }
       await _initializer.ensureWorkingCopy();
       final seeds = await _loadWorkingCopySeeds(workingCopyFile);
-      debugPrint(
-        'Working copy missing/corrupt -> reimported (${seeds.length} entries)',
-      );
       return seeds;
     }
   }
