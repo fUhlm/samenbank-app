@@ -15,7 +15,9 @@ The goal is simple:
 
 > Open the app, select the month, and immediately see what you can sow.
 
-![Month view](docs/images/screenshot-month-view.png)
+<p align="center">
+  <img src="docs/images/screenshot-month-view.png" width="500">
+</p>
 
 ---
 
