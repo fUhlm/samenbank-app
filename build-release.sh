@@ -4,6 +4,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 KEY_PROPERTIES_FILE="$SCRIPT_DIR/android/key.properties"
+BUILD_OUTPUT_FILE="$SCRIPT_DIR/build/app/outputs/flutter-apk/app-release.apk"
 
 if [[ ! -f "$KEY_PROPERTIES_FILE" ]]; then
   echo "Missing android/key.properties."
@@ -25,3 +26,11 @@ fi
 
 cd "$SCRIPT_DIR"
 flutter build apk --release "$@"
+
+if [[ ! -f "$BUILD_OUTPUT_FILE" ]]; then
+  echo "Expected APK was not created: $BUILD_OUTPUT_FILE"
+  exit 1
+fi
+
+echo "Release APK created:"
+echo "  $BUILD_OUTPUT_FILE"

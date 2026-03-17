@@ -195,6 +195,56 @@ flutter run
 
 ---
 
+## Releases
+
+Published app downloads should be provided through GitHub Releases:
+
+- [GitHub Releases](https://github.com/fUhlm/samenbank-app/releases)
+
+GitHub Releases are the preferred download location because they provide versioned tags, release notes, and downloadable APK assets without storing binaries in the repository history.
+
+---
+
+## Android release APK
+
+To build a signed Android release APK, use:
+
+```bash
+./build-release.sh
+```
+
+The script:
+
+- prompts for signing passwords if needed
+- builds the release APK
+
+The output APK is created here:
+
+```bash
+build/app/outputs/flutter-apk/app-release.apk
+```
+
+You can override the app version used during the build:
+
+```bash
+./build-release.sh --build-name=1.0.1 --build-number=2
+```
+
+The signing configuration itself stays local and must not be committed:
+
+- `android/key.properties`
+- `.jks` / `.keystore` files
+
+Recommended release flow:
+
+1. Build the signed APK with `./build-release.sh`
+2. Create a Git tag such as `v1.0.1`
+3. Open [GitHub Releases](https://github.com/fUhlm/samenbank-app/releases)
+4. Draft a new release from that tag
+5. Upload `build/app/outputs/flutter-apk/app-release.apk` as a release asset
+
+---
+
 ## Project Status
 
 The project is currently under active development.

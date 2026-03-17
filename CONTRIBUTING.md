@@ -27,6 +27,7 @@ dart format .
 - If you change the data model, also review and update the relevant documentation in `docs/` when needed.
 - Add tests for new logic whenever practical.
 - Do not commit build artifacts, temporary files, or local export files.
+- Publish release APKs through GitHub Releases instead of committing them to the repository.
 - Do not commit private seed datasets; the repository should only contain demo or test data.
 
 ### Pull Requests
@@ -72,6 +73,7 @@ dart format .
 - Bei Änderungen am Datenmodell die relevante Dokumentation in `docs/` mitprüfen und bei Bedarf aktualisieren.
 - Neue Logik nach Möglichkeit mit Tests absichern.
 - Keine Build-Artefakte, temporären Dateien oder lokalen Exportdateien committen.
+- Release-APKs über GitHub Releases veröffentlichen und nicht im Repository committen.
 - Keine privaten Seed-Datensätze committen; im Repository bleiben nur Demo- oder Testdaten.
 
 ### Pull Requests
