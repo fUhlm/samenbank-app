@@ -28,6 +28,9 @@ The goal is simple:
 - Fast variety search
 - Detailed cultivation calendar
 - Offline-first seed data
+- File-based import/export
+- Optional external working file via shared folder (for example Nextcloud)
+- No integrated cloud account sync
 
 ---
 
@@ -255,8 +258,9 @@ Implemented so far:
 - variety list and search
 - variety detail view
 - cultivation calendar visualization
-- data import/export
-- optional synchronization support
+- file-based data import/export
+- optional use of an external working file via shared folders such as Nextcloud
+- no integrated cloud account synchronization
 
 Planned features:
 

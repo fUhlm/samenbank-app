@@ -51,3 +51,7 @@ build/
 # Local/private seed datasets must not be committed.
 assets/*.private.json
 assets/*.local.json
+
+# Local documentation workspaces must not be committed.
+docs/ap/
+docs/qa/
