@@ -255,13 +255,13 @@ Implemented so far:
 - variety list and search
 - variety detail view
 - cultivation calendar visualization
+- data import/export
+- optional synchronization support
 
 Planned features:
 
 - improved filtering
 - seed inventory tracking
-- data import/export
-- optional synchronization support
 
 ---
 
